@@ -2,3 +2,46 @@
   padding: 0px;
   margin: 0px;
 }
+
+/* Sign up */
+
+.SignUp-page{
+  text-align: center;
+  font-family: Poppins, sans-serif;
+}
+
+.Signup-details{
+  width: 500px;
+  margin: auto;
+  padding: 10px;
+}
+
+input[type="text"]
+{
+  width: 90%;
+  
+}
+
+input[type="email"]
+{
+  width: 90%;
+ 
+}
+input[type="password"]
+{
+  width: 90%;
+  
+}
+
+button[type="submit"]
+{
+  width: 90%;
+  
+}
+
+.Signup-details .signup-text>span{
+  font-weight: 700;
+  font-family: Poppins, sans-serif;
+  font-size: 30px;
+}
+
