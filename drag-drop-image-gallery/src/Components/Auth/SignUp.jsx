@@ -1,8 +1,17 @@
 import { database } from "../Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
+import {useNavigate} from "react-router-dom";
+
+import { HOME } from "../Navigating/NavigateContent";
+
 const SignUp = () => {
- 
+
+    const navigate = useNavigate();
+
+    const ToHome = () => {
+        navigate("/")
+    }
     const handleSubmit = (e) =>{
         e.preventDefault()
         const email = e.target.email.value;
@@ -10,8 +19,10 @@ const SignUp = () => {
         
         createUserWithEmailAndPassword (database,email,password).then(data =>{
             console.log(data, "authData")
+            ToHome()
         })
     }
+
 
 
   return (

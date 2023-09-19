@@ -1,0 +1,5 @@
+export const LANDING_ROUTE = '/'
+export const HOME = '/'
+export const AUTH = 'Auth'
+export const GALLERY = 'Gallery'
+export const SIGNIN = 'SignIn'
