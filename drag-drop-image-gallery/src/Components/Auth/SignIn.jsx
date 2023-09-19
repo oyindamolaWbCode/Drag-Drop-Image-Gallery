@@ -1,11 +1,15 @@
+import { database } from "../Firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 const SignIn = () => {
+
     return (
       <div className="SignUp-page">
         <div className="Signup-details">
           <div className="signup-text mt-3 mb-3">
             <span>Sign Up</span>
           </div>
-          <form>
+          <form >
             <input
               name="username"
               type="text"

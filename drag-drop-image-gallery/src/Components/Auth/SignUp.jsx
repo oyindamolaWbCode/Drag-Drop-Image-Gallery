@@ -1,11 +1,26 @@
+import { database } from "../Firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
 const SignUp = () => {
+ 
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        
+        createUserWithEmailAndPassword (database,email,password).then(data =>{
+            console.log(data, "authData")
+        })
+    }
+
+
   return (
     <div className="SignUp-page">
       <div className="Signup-details">
         <div className="signup-text mt-3 mb-3">
           <span>Sign Up</span>
         </div>
-        <form>
+        <form onSubmit={(e)=> handleSubmit(e)}>
           <input
             name="username"
             type="text"
@@ -13,13 +28,13 @@ const SignUp = () => {
             className="p-1 rounded-1 py-2 mt-5"
           />
           <input
-            name="username"
+            name="email"
             type="email"
             placeholder="Email Address"
             className="p-1 rounded-1 m-4 py-2 "
           />
           <input
-            name="username"
+            name="password"
             type="password"
             placeholder="Password"
             className="p-1 rounded-1 py-2 mb-5"
