@@ -1,26 +1,40 @@
 import { database } from "../Firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 import {useNavigate} from "react-router-dom";
 
 import { HOME } from "../Navigating/NavigateContent";
+import { useState } from "react";
 
 const SignUp = () => {
+
+  const [login, setLogin] = useState(false)
 
     const navigate = useNavigate();
 
     const ToHome = () => {
         navigate("/")
     }
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e, type) =>{
         e.preventDefault()
         const email = e.target.email.value;
         const password = e.target.password.value;
-        
+        if(type == 'signup'){
         createUserWithEmailAndPassword (database,email,password).then(data =>{
             console.log(data, "authData")
             ToHome()
+        }).catch(err =>{
+          alert(err.code)
+          setLogin(true)
         })
+      }else{
+        signInWithEmailAndPassword(database,email,password).then(data =>{
+          console.log(data, "authData")
+          ToHome()
+      }).catch(err =>{
+        alert(err.code)
+      })
+      }
     }
 
 
@@ -31,7 +45,7 @@ const SignUp = () => {
         <div className="signup-text mt-3 mb-3">
           <span>Sign Up</span>
         </div>
-        <form onSubmit={(e)=> handleSubmit(e)}>
+        <form onSubmit={(e)=> handleSubmit(e, login?'signin': 'signup')}>
           <input
             name="username"
             type="text"
