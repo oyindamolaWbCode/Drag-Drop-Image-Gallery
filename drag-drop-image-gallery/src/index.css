@@ -45,3 +45,15 @@ button[type="submit"]
   font-size: 30px;
 }
 
+/* gallery */
+
+.gallery-shop{
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+  column-width: 33%;
+  padding: 0px 12px;
+}
+
