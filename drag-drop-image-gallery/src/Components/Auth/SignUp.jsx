@@ -1,43 +1,47 @@
-import { database } from "../Firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { database } from "../../Firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { HOME } from "../Navigating/NavigateContent";
 import { useState } from "react";
 
 const SignUp = () => {
+  const [login, setLogin] = useState(false);
 
-  const [login, setLogin] = useState(false)
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    const ToHome = () => {
-        navigate("/")
-    }
-    const handleSubmit = (e, type) =>{
-        e.preventDefault()
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        if(type == 'signup'){
-        createUserWithEmailAndPassword (database,email,password).then(data =>{
-            console.log(data, "authData")
-            ToHome()
-        }).catch(err =>{
-          alert(err.code)
-          setLogin(true)
+  const ToHome = () => {
+    navigate("/");
+  };
+  const handleSubmit = (e, type) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    if (type == "signup") {
+      createUserWithEmailAndPassword(database, email, password)
+        .then((data) => {
+          console.log(data, "authData");
+          ToHome();
         })
-      }else{
-        signInWithEmailAndPassword(database,email,password).then(data =>{
-          console.log(data, "authData")
-          ToHome()
-      }).catch(err =>{
-        alert(err.code)
-      })
-      }
+        .catch((err) => {
+          alert(err.code);
+          setLogin(true);
+        });
+    } else {
+      signInWithEmailAndPassword(database, email, password)
+        .then((data) => {
+          console.log(data, "authData");
+          ToHome();
+        })
+        .catch((err) => {
+          alert(err.code);
+        });
     }
-
-
+  };
 
   return (
     <div className="SignUp-page">
@@ -45,7 +49,7 @@ const SignUp = () => {
         <div className="signup-text mt-3 mb-3">
           <span>Sign Up</span>
         </div>
-        <form onSubmit={(e)=> handleSubmit(e, login?'signin': 'signup')}>
+        <form onSubmit={(e) => handleSubmit(e, login ? "signin" : "signup")}>
           <input
             name="username"
             type="text"
@@ -66,7 +70,9 @@ const SignUp = () => {
           />
 
           <div className="logSub">
-            <button type="submit" className="p-1 rounded-1 py-2 mb-3">Sign up with Email</button>
+            <button type="submit" className="p-1 rounded-1 py-2 mb-3">
+              Sign up with Email
+            </button>
           </div>
 
           <div className="sign">
