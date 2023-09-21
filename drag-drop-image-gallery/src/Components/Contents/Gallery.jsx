@@ -1,7 +1,7 @@
 // import './gallery.css';
 
 import React from 'react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Close } from '@mui/icons-material';
 import img1 from "../../assets/Images/anna-keibalo-SJ4NDKx-I_8-unsplash.jpg";
 import img2 from "../../assets/Images/christopher-kuzman-R7uGA03vbbk-unsplash.jpg";
@@ -21,7 +21,7 @@ import img15 from "../../assets/Images/taylor-heery-6g0lrIg6QT4-unsplash.jpg";
 
 
 const Gallery = () => {
-  let data = [
+    let data = [
 
     {
         id: 1,
@@ -89,32 +89,35 @@ const Gallery = () => {
         imgSrc: img15,
     },
 
-  ];
+    ];
 
-//   const [model, setModel] = useState(false);
-//   const [tempimgSrc, setTempImgSrc] = useState('');
+  const [model, setModel] = useState(false);
+  const [tempimgSrc, setTempImgSrc] = useState('');
 
-//   const getImg = (imgSrc) =>{
-//     setTempImgSrc(imgSrc);
-//     setModel(true);
-//   }
+  const getImg = (imgSrc) =>{
+    setTempImgSrc(imgSrc);
+    setModel(true);
+  }
+
 
   return (
     <div className="Gallery-page">
       <h1>This the Gallery page</h1>
-      {/* <div className={model ? "model open" : "model"}>
+      <div className={model ? "model open" : "model"}>
       {tempimgSrc && (
           <>
             <img src={tempimgSrc} alt="Modal" />
             <Close onClick={() => setModel(false)} />
           </>
         )}
-      </div> */}
-      <div className="gallery-shop">
+      </div>
+      <div className="gallery-shop" >
         {data.map((item, index) =>{
             return(
-                <div className="pics" key={index} onClick={() => getImg(item.imgSrc)}>
-                    <img src={item.imgSrc} style={{width: '100%', backgroundPosition: 'center', backgroundSize: 'contain', backgroundRepeat: 'none', padding: '5px 0px'}}/>
+                <div className="pics" key={index} 
+                onClick={() => getImg(item.imgSrc)}
+              >
+                    <img src={item.imgSrc} style={{width: '100%', backgroundPosition: 'center', backgroundSize: 'contain', backgroundRepeat: 'none', padding: '5px 0px'}}  alt={`Image ${item.id}`}/>
                </div>     
             )
         })}
