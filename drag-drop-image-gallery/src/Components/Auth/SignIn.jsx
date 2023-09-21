@@ -10,7 +10,7 @@ const SignIn = () => {
   const navigate = useNavigate();
 
   const ToHome = () => {
-    navigate("/");
+    navigate("/Home");
   };
   const handleSubmit = (e) => {
     e.preventDefault();
