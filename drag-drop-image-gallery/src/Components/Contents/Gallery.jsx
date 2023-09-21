@@ -1,6 +1,8 @@
 // import './gallery.css';
 
 import React from 'react';
+import { useState } from 'react';
+import { Close } from '@mui/icons-material';
 import img1 from "../../assets/Images/anna-keibalo-SJ4NDKx-I_8-unsplash.jpg";
 import img2 from "../../assets/Images/christopher-kuzman-R7uGA03vbbk-unsplash.jpg";
 import img3 from "../../assets/Images/hi-estudio-UPE9seVOHck-unsplash.jpg";
@@ -89,13 +91,29 @@ const Gallery = () => {
 
   ];
 
+//   const [model, setModel] = useState(false);
+//   const [tempimgSrc, setTempImgSrc] = useState('');
+
+//   const getImg = (imgSrc) =>{
+//     setTempImgSrc(imgSrc);
+//     setModel(true);
+//   }
+
   return (
     <div className="Gallery-page">
       <h1>This the Gallery page</h1>
+      {/* <div className={model ? "model open" : "model"}>
+      {tempimgSrc && (
+          <>
+            <img src={tempimgSrc} alt="Modal" />
+            <Close onClick={() => setModel(false)} />
+          </>
+        )}
+      </div> */}
       <div className="gallery-shop">
         {data.map((item, index) =>{
             return(
-                <div className="pics" key={index}>
+                <div className="pics" key={index} onClick={() => getImg(item.imgSrc)}>
                     <img src={item.imgSrc} style={{width: '100%', backgroundPosition: 'center', backgroundSize: 'contain', backgroundRepeat: 'none', padding: '5px 0px'}}/>
                </div>     
             )
