@@ -1,6 +1,5 @@
 import { database } from "../../Firebase";
 import {
-  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
