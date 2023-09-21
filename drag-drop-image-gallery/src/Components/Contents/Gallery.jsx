@@ -124,7 +124,7 @@ const Gallery = () => {
 
   return (
     <div className="Gallery-page">
-      <h1>This the Gallery page</h1>
+      <h1 className="gallery-head">Image Gallery</h1>
       <div className={model ? "model open" : "model"}>
         {tempimgSrc && (
           <>

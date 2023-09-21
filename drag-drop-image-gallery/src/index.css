@@ -134,3 +134,8 @@ button[type="submit"]
   background-color: rgba(0,0,0,0.4);
   color:#ffffff;
 }
+
+.gallery-head{
+  text-align: center;
+  padding: 10px;
+}
