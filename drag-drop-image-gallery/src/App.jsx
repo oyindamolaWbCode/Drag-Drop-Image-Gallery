@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import {
   Route,
   createBrowserRouter,
@@ -6,7 +6,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from "./Components/Contents/Home";
-import Gallery from "./Components/Contents/Gallery";
+//import Gallery from "./Components/Contents/Gallery";
 import SignUp from "./Components/Auth/SignUp";
 import SignIn from "./Components/Auth/SignIn";
 
